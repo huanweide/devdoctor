@@ -1,12 +1,23 @@
+<!-- badges -->
+[![Node](https://img.shields.io/badge/Node.js-≥14-339933?logo=node.js&logoColor=white)](https://nodejs.org)
+[![Zero-Deps](https://img.shields.io/badge/dependencies-zero-0f9d58?logo=npm&logoColor=white)](https://www.npmjs.com/)
+[![License](https://img.shields.io/github/license/huanweide/devdoctor)](LICENSE)
+<!-- /badges -->
+
 # devdoctor
 
 > 零依赖单文件 Node CLI · 四维项目体检中心
 
-把分散在多个工具里的"项目健康体检"凝成一把尺子：**依赖胖瘦、许可证合规、依赖环、明文密钥**，一个命令全检，纯本地、离线、零依赖、单文件、跨平台，可直接进 CI 门禁。
+把分散在多个工具里的「项目健康体检」凝成一把尺子：**依赖胖瘦、许可证合规、依赖环、明文密钥**，一个命令全检，纯本地、离线、零依赖、单文件、跨平台，可直接进 CI 门禁。
+
+## 谁该用 / 谁先别用
+
+- **该用**：每个有 `node_modules` / `.env` 的 JS / TS 开发者；想一把尺子量 bloat / license / cycles / secrets；想在 CI 里做四维门禁。
+- **先别用**：已分别用 snyk / license-checker / depcheck 且对分离工具满意的人（可作互补）；不需要综合入口、只想单点查的。
 
 ## 为什么是 devdoctor
 
-- **组合叙事，而非新量**：safeguard / idiot-index / recall-cli / pagext / chaineye / licguard 都是单点零依赖工具。devdoctor 把它们里"体检类"的能力（bloat 来自 idiot-index 思路、license 来自 licguard、cycles 来自 chaineye）和一个新增的 secrets 扫描，整合进一个入口——**不用分别装四个工具，一把尺子量完**。
+- **组合叙事，而非新量**：safeguard / idiot-index / recall-cli / pagext / chaineye / licguard 都是单点零依赖工具。devdoctor 把它们里「体检类」的能力（bloat 来自 idiot-index 思路、license 来自 licguard、cycles 来自 chaineye）和一个新增的 secrets 扫描，整合进一个入口——**不用分别装四个工具，一把尺子量完**。
 - **比竞品好或市场压根无**：snyk / depcheck / license-checker 各自独立、多数要 `npm install`。devdoctor 零依赖单文件，离线即可跑，四维合一。
 - **大受众**：每个 JS/TS 开发者都有 `node_modules` 和 `.env`，四维体检人人用得上。
 
@@ -57,13 +68,21 @@ node index.js bloat --max-mb 200
 
 - **纯本地、零依赖、离线、单文件**：只用 Node 内置 `fs` / `path`，无任何 npm 包。
 - **门禁防呆**：所有数值阈值一律 `Number.isFinite` 校验，非整数直接 `exit 2`，绝不静默放行（避免 `count > NaN` 恒 false 让门禁形同虚设）。
-- **路径先验**：root 必须 `statSync` 存在且为目录，错误路径不谎报"通过"。
+- **路径先验**：root 必须 `statSync` 存在且为目录，错误路径不谎报「通过」。
 - **稳健解析**：坏 JSON 静默跳过不崩；大文件（>5MB）跳过避免 OOM；LGPL 先于 GPL 匹配，避免弱传染被误判为强传染。
 - **环检测**：显式栈迭代 DFS（三色标记），大仓库不栈溢出。
 
 ## 与 family 工具的关系
 
-devdoctor 是已有零依赖 family 的"体检整合版"。它不替代 recall-cli（终端补全）/ pagext（网页提取）等非体检工具，而是把体检类能力收口成一个入口。
+devdoctor 是已有零依赖 family 的「体检整合版」。它不替代 recall-cli（终端补全）/ pagext（网页提取）等非体检工具，而是把体检类能力收口成一个入口。
+
+## ⭐ 给个 Star
+
+如果 devdoctor 帮你一把尺子量清了项目健康，欢迎点个 Star ⭐：https://github.com/huanweide/devdoctor
+
+## 作者
+
+由 [huanweide](https://github.com/huanweide) 维护。
 
 ## License
 
