@@ -5,6 +5,7 @@
 <!-- /badges -->
 
 # devdoctor
+> **English** · [README_EN.md](./README_EN.md)
 
 > 零依赖单文件 Node CLI · 四维项目体检中心
 
